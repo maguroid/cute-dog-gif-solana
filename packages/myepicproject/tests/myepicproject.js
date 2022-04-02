@@ -37,5 +37,16 @@ describe("myepicproject", () => {
     console.log("👀 GIF Count", account.totalGifs.toString());
 
     console.log("👀 GIF List", account.gifList);
+
+    await program.rpc.vote(0, {
+      accounts: {
+        baseAccount: baseAccount.publicKey,
+        user: provider.wallet.publicKey,
+      },
+    });
+
+    account = await program.account.baseAccount.fetch(baseAccount.publicKey);
+
+    console.log("👀 Updated GIF List", account.gifList);
   });
 });
