@@ -111,6 +111,20 @@
   object-fit: cover;
 }
 
+.gif-caption {
+  font-size: 12px;
+  color: white;
+  font-weight: bold;
+}
+
+.thumbs-up {
+  width: 50px;
+  margin: 0 auto;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 .connected-container input[type="text"] {
   display: inline-block;
   color: white;

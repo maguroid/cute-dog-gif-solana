@@ -9,6 +9,7 @@
     "start": "yarn workspace @gif-portal/web start",
     "anchor:test": "yarn workspace @gif-portal/anchor test",
     "anchor:build": "yarn workspace @gif-portal/anchor build",
-    "anchor:deploy": "yarn workspace @gif-portal/anchor deploy"
+    "anchor:deploy": "yarn workspace @gif-portal/anchor deploy",
+    "keypair:create": "yarn workspace @gif-portal/web keypair:create"
   }
 }
