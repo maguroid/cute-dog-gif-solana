@@ -6,10 +6,10 @@
     "packages/*"
   ],
   "scripts": {
-    "start": "yarn workspace @gif-portal/web start",
-    "anchor:test": "yarn workspace @gif-portal/anchor test",
-    "anchor:build": "yarn workspace @gif-portal/anchor build",
-    "anchor:deploy": "yarn workspace @gif-portal/anchor deploy",
+    "start": "yarn --cwd packages/web start",
+    "anchor:test": "yarn --cwd packages/myepicproject test",
+    "anchor:build": "yarn --cwd packages/myepicproject test",
+    "anchor:deploy": "yarn --cwd packages/myepicproject test",
     "keypair:create": "yarn workspace @gif-portal/web keypair:create"
   }
 }
