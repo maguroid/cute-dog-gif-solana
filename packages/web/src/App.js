@@ -236,9 +236,7 @@ const App = () => {
       <div className={walletAddress ? "authed-container" : "container"}>
         <div className="header-container">
           <p className="header">🐶 Cute Dog GIF Portal</p>
-          <p className="sub-text">
-            View your GIF collection in the metaverse ✨
-          </p>
+          <p className="sub-text">Cute dog GIF collection on Solana ✨</p>
           {!walletAddress && renderNotConnectedContainer()}
           {walletAddress && renderConnectedContainer()}
         </div>
