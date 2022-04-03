@@ -25,16 +25,8 @@ const opts = {
 };
 
 // Constants
-const TWITTER_HANDLE = "_buildspace";
+const TWITTER_HANDLE = "maguroid";
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
-const TEST_GIFS = [
-  "https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif",
-  "https://media.giphy.com/media/3o7527pa7qs9kCG78A/giphy.gif",
-  "https://media.giphy.com/media/RQSuZfuylVNAY/giphy.gif",
-  "https://media.giphy.com/media/kiBcwEXegBTACmVOnE/giphy.gif",
-  "https://media.giphy.com/media/eeUJaTwsHh3tswkaYm/giphy.gif",
-];
-
 const App = () => {
   const [walletAddress, setWalletAddress] = useState(null);
   const [inputValue, setInputValue] = useState("");
@@ -133,7 +125,23 @@ const App = () => {
     }
   };
 
-  const upVote = () => {};
+  const upVote = async (item) => {
+    try {
+      const provider = getProvider();
+      const program = new Program(idl, programID, provider);
+      console.log("ping");
+      await program.rpc.vote(item.id, {
+        accounts: {
+          baseAccount: baseAccount.publicKey,
+          user: provider.wallet.publicKey,
+          systemProgram: SystemProgram.programId,
+        },
+      });
+      await getGifList();
+    } catch (error) {
+      console.error("Error voting GIF", error);
+    }
+  };
 
   const renderNotConnectedContainer = () => (
     <button
@@ -167,7 +175,7 @@ const App = () => {
           >
             <input
               type="text"
-              placeholder="Enter gif link!"
+              placeholder="Enter gif link! (e.g. https://giphy.com/gifs/4Zo41lhzKt6iZ8xff9)"
               value={inputValue}
               onChange={onInputChange}
             />
@@ -181,8 +189,9 @@ const App = () => {
                 <img src={item.gifLink} alt={item.gifLink} />
                 <p className="gif-caption">posted by:</p>
                 <p className="gif-caption">{item.userAddress.toString()}</p>
-                <button className="thumbs-up" onClick={upVote}>
-                  <FontAwesomeIcon icon={faThumbsUp} color="grey" />
+                <button className="thumbs-up" onClick={() => upVote(item)}>
+                  <FontAwesomeIcon icon={faThumbsUp} color="green" size="lg" />
+                  <span className="vote-count">{item.votes.toString()}</span>
                 </button>
               </div>
             ))}
@@ -240,7 +249,7 @@ const App = () => {
             href={TWITTER_LINK}
             target="_blank"
             rel="noreferrer"
-          >{`built on @${TWITTER_HANDLE}`}</a>
+          >{`built by @${TWITTER_HANDLE}`}</a>
         </div>
       </div>
     </div>
