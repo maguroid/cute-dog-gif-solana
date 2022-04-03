@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "license": "MIT",
   "dependencies": {
-    "@gif-portal/myepicproject": "^0.1.0",
     "@depay/web3-mock": "^11.7.0",
     "@fortawesome/fontawesome-free": "^6.1.1",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
