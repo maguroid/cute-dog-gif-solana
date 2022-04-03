@@ -29,19 +29,13 @@ pub mod myepicproject {
         Ok(())
     }
 
-    pub fn vote(ctx: Context<Vote>, gif_id: u64) -> Result<()> {
+    pub fn vote(ctx: Context<Vote>, gif_id: u16) -> Result<()> {
         let base_account = &mut ctx.accounts.base_account;
 
-        // let gif_iter = base_account.gif_list.into_iter();
         let gif_iter = &mut base_account.gif_list.iter_mut();
-        match gif_iter.find(|item| item.id == gif_id) {
-            Some(gif) => gif.votes += 1,
-            _ => (),
-        }
-
-        // gif_iter
-        //     .find(|item| item.id == gif_id)
-        //     .and_then(|gif| Some(gif.votes += 1));
+        gif_iter
+            .find(|item| item.id == gif_id)
+            .map(|found| found.votes += 1);
 
         Ok(())
     }
@@ -72,7 +66,7 @@ pub struct Vote<'info> {
 
 #[derive(Debug, Clone, AnchorSerialize, AnchorDeserialize)]
 pub struct ItemStruct {
-    pub id: u64,
+    pub id: u16,
     pub gif_link: String,
     pub user_address: Pubkey,
     pub votes: u64,
@@ -80,6 +74,6 @@ pub struct ItemStruct {
 
 #[account]
 pub struct BaseAccount {
-    pub total_gifs: u64,
+    pub total_gifs: u16,
     pub gif_list: Vec<ItemStruct>,
 }
