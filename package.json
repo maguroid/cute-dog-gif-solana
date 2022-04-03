@@ -6,6 +6,7 @@
     "packages/*"
   ],
   "scripts": {
+    "postinstall": "yarn workspaces info",
     "web:start": "yarn --cwd packages/web start",
     "web:build": "yarn --cwd packages/web build",
     "anchor:test": "yarn --cwd packages/myepicproject test",
