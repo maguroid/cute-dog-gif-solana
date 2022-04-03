@@ -1,12 +1,12 @@
 # Cute Dog GIF
 
-![cute-dog-demo](public/cute-dog-demo.png)
+![cute-dog-demo](public/cute-dog-demo.jpeg)
 
 ## Getting started
 
 1. installing and setting up [Phantom Wallet](https://phantom.app/download)
 1. visit web site
-   https://cute-dog-gif-solana-rlxurz5qn-maguroid.vercel.app/
+   https://cute-dog-gif-solana.vercel.app/
 
 1. change current network to **devnet**
    ![phantom-setup](public/phantom-setup.png)
